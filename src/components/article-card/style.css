@@ -1,28 +1,35 @@
 .ArticleCard {
-  padding: 20px 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+  padding-block: 24px;
 }
 
-.ArticleCard-description {
-  font-size: 18px;
-  margin: 20px 0;
+.ArticleCard-prop-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .ArticleCard-prop {
-  margin: 20px 0;
   display: flex;
-  justify-content: flex-start;
-  font-size: 18px;
+  gap: 10px;
 }
 
 .ArticleCard-prop_size_big {
+  font-family: var(--second-font-family);
   font-size: 24px;
   font-weight: bold;
 }
 
 .ArticleCard-label {
-  padding-right: 10px;
+  width: 200px;
 }
 
 .ArticleCard-value {
   font-weight: bold;
+}
+
+.ArticleCard-prop_size_big .ArticleCard-label {
+  width: fit-content;
 }

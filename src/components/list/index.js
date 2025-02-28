@@ -5,13 +5,13 @@ import './style.css';
 
 function List({ list, renderItem }) {
   return (
-    <div className="List">
+    <ul className="List">
       {list.map(item => (
-        <div key={item._id} className="List-item">
+        <li key={item._id} className="List-item">
           {renderItem(item)}
-        </div>
+        </li>
       ))}
-    </div>
+    </ul>
   );
 }
 

@@ -1,5 +1,10 @@
 .Controls {
   display: flex;
   justify-content: flex-end;
-  padding: 20px;
+  padding: 24px 16px;
+}
+
+.Controls button {
+  background-color: var(--primary);
+  color: var(--second-text);
 }

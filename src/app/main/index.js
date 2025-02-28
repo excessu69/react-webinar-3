@@ -26,14 +26,16 @@ function Main() {
   const { t } = useTranslate();
 
   return (
-    <PageLayout>
+    <>
       <Head title={t('title')}>
         <LocaleSelect />
       </Head>
-      <Navigation />
-      <CatalogFilter />
-      <CatalogList />
-    </PageLayout>
+      <PageLayout>
+        <Navigation />
+        <CatalogFilter />
+        <CatalogList />
+      </PageLayout>
+    </>
   );
 }
 
