@@ -19,6 +19,8 @@
   "auth.login": "Login",
   "auth.password": "Password",
   "auth.signIn": "Sign in",
+  "auth.login-placeholder": "Enter login",
+  "auth.password-placeholder": "Enter password",
   "session.signIn": "Sign In",
   "session.signOut": "Sign Out"
 }

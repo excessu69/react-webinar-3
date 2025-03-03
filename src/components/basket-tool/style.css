@@ -2,14 +2,23 @@
 .BasketTool {
   display: flex;
   justify-content: flex-end;
-  padding: 20px;
-  font-size: 18px;
 }
 
-.BasketTool-label {
+.BasketTool-action {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  border: 1.5px solid var(--primary);
+  background-color: var(--background);
+  padding-block: 7px;
+
+  &:hover {
+    .BasketTool-total {
+      color: var(--primary);
+    }
+  }
 }
 
 .BasketTool-total {
-  font-weight: bold;
-  margin: 0 20px;
+  transition: 0.3s;
 }

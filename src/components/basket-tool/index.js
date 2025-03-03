@@ -2,6 +2,7 @@ import { memo } from 'react';
 import PropTypes from 'prop-types';
 import { cn as bem } from '@bem-react/classname';
 import numberFormat from '../../utils/number-format';
+import Cart from '../../assets/icon/cart.svg';
 import './style.css';
 
 function BasketTool(props) {
@@ -10,13 +11,14 @@ function BasketTool(props) {
   const cn = bem('BasketTool');
   return (
     <div className={cn()}>
-      <span className={cn('label')}>{t('basket.inBasket')}</span>
-      <span className={cn('total')}>
-        {amount
-          ? `${amount} ${t('basket.articles', amount)} / ${numberFormat(sum)} ₽`
-          : t('basket.empty')}
-      </span>
-      <button onClick={onOpen}>{t('basket.open')}</button>
+      <button className={cn('action')} onClick={onOpen}>
+        <Cart className={cn('icon')} />
+        <span className={cn('total')}>
+          {amount
+            ? `${amount} ${t('basket.articles', amount)} / ${numberFormat(sum)} ₽`
+            : t('basket.empty')}
+        </span>
+      </button>
     </div>
   );
 }

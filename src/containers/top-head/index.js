@@ -4,6 +4,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import useTranslate from '../../hooks/use-translate';
 import useSelector from '../../hooks/use-selector';
 import useStore from '../../hooks/use-store';
+import Button from '../../components/button';
 
 function TopHead() {
   const { t } = useTranslate();
@@ -29,12 +30,12 @@ function TopHead() {
   };
 
   return (
-    <SideLayout side="end" padding="small">
-      {select.exists ? <Link to="/profile">{select.user.profile.name}</Link> : ''}
+    <SideLayout side="end" padding="small" gap="big">
+      {select.exists ? <Link to="/profile" style={{fontSize: '16px'}}>{select.user.profile.name}</Link> : ''}
       {select.exists ? (
-        <button onClick={callbacks.onSignOut}>{t('session.signOut')}</button>
+        <Button style="text" onClick={callbacks.onSignOut} title={t('session.signOut')} />
       ) : (
-        <button onClick={callbacks.onSignIn}>{t('session.signIn')}</button>
+        <Button style="text" onClick={callbacks.onSignIn} title={t('session.signIn')} />
       )}
     </SideLayout>
   );

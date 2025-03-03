@@ -5,10 +5,10 @@ import './style.css';
 function Head({ title, children }) {
   return (
     <div className="Head">
-      <div className="Head-place">
+      <div className="Head-container">
         <h1>{title}</h1>
+        <div className="Head-place">{children}</div>
       </div>
-      <div className="Head-place">{children}</div>
     </div>
   );
 }

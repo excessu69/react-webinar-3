@@ -1,0 +1,41 @@
+.Button_style_primary {
+  background-color: var(--primary);
+  color: var(--second-text);
+
+  &:hover {
+    background-color: var(--background);
+    border-color: var(--primary);
+    color: var(--primary);
+  }
+}
+
+.Button_style_delete {
+  background-color: var(--delete);
+  color: var(--second-text);
+  border-color: var(--delete);
+
+  &:hover {
+    background-color: var(--background);
+    color: var(--delete);
+    border-color: var(--delete);
+  }
+}
+
+.Button_style_outline {
+  border-color: var(--primary);
+  color: var(--primary);
+
+  &:hover {
+    background-color: var(--primary);
+    color: var(--second-text);
+  }
+}
+
+.Button_style_text {
+  padding: 0;
+  border: none;
+
+  &:hover {
+    color: var(--primary);
+  }
+}

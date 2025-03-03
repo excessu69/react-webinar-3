@@ -9,6 +9,7 @@ import CatalogFilter from '../../containers/catalog-filter';
 import CatalogList from '../../containers/catalog-list';
 import LocaleSelect from '../../containers/locale-select';
 import TopHead from '../../containers/top-head';
+import HeadLayout from '../../components/head-layout';
 
 function Main() {
   const store = useStore();
@@ -24,15 +25,19 @@ function Main() {
   const { t } = useTranslate();
 
   return (
-    <PageLayout>
-      <TopHead />
+    <>
+      <HeadLayout>
+        <TopHead />
+      </HeadLayout>
       <Head title={t('title')}>
         <LocaleSelect />
       </Head>
-      <Navigation />
-      <CatalogFilter />
-      <CatalogList />
-    </PageLayout>
+      <PageLayout>
+        <Navigation />
+        <CatalogFilter />
+        <CatalogList />
+      </PageLayout>
+    </>
   );
 }
 

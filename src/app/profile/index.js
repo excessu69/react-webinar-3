@@ -1,5 +1,4 @@
-import { memo, useCallback, useMemo } from 'react';
-import { useParams } from 'react-router-dom';
+import { memo } from 'react';
 import useStore from '../../hooks/use-store';
 import useSelector from '../../hooks/use-selector';
 import useTranslate from '../../hooks/use-translate';
@@ -8,10 +7,10 @@ import PageLayout from '../../components/page-layout';
 import Head from '../../components/head';
 import Navigation from '../../containers/navigation';
 import Spinner from '../../components/spinner';
-import ArticleCard from '../../components/article-card';
 import LocaleSelect from '../../containers/locale-select';
 import TopHead from '../../containers/top-head';
 import ProfileCard from '../../components/profile-card';
+import HeadLayout from '../../components/head-layout';
 
 function Profile() {
   const store = useStore();
@@ -28,16 +27,20 @@ function Profile() {
   const { t } = useTranslate();
 
   return (
-    <PageLayout>
-      <TopHead />
+    <>
+      <HeadLayout>
+        <TopHead />
+      </HeadLayout>
       <Head title={t('title')}>
         <LocaleSelect />
       </Head>
-      <Navigation />
-      <Spinner active={select.waiting}>
-        <ProfileCard data={select.profile} />
-      </Spinner>
-    </PageLayout>
+      <PageLayout>
+        <Navigation />
+        <Spinner active={select.waiting}>
+          <ProfileCard data={select.profile} />
+        </Spinner>
+      </PageLayout>
+    </>
   );
 }
 

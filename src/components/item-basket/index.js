@@ -1,9 +1,9 @@
-import { memo, useCallback } from 'react';
+import { memo } from 'react';
 import { cn as bem } from '@bem-react/classname';
-import propTypes from 'prop-types';
 import numberFormat from '../../utils/number-format';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
+import Button from '../button';
 import './style.css';
 
 function ItemBasket(props) {
@@ -28,13 +28,13 @@ function ItemBasket(props) {
       </div>
       <div className={cn('right')}>
         <div className={cn('cell')}>
-          {numberFormat(props.item.price)} {labelCurr}
-        </div>
-        <div className={cn('cell')}>
           {numberFormat(props.item.amount || 0)} {labelUnit}
         </div>
         <div className={cn('cell')}>
-          <button onClick={callbacks.onRemove}>{labelDelete}</button>
+          {numberFormat(props.item.price)} {labelCurr}
+        </div>
+        <div className={cn('cell')}>
+          <Button style='delete' onClick={callbacks.onRemove} title={labelDelete} />
         </div>
       </div>
     </div>

@@ -7,6 +7,7 @@ import Input from '../../components/input';
 import SideLayout from '../../components/side-layout';
 import treeToList from '../../utils/tree-to-list';
 import listToTree from '../../utils/list-to-tree';
+import Button from '../../components/button';
 
 function CatalogFilter() {
   const store = useStore();
@@ -68,8 +69,14 @@ function CatalogFilter() {
         options={options.categories}
         value={select.category}
         onChange={callbacks.onCategory}
+        size="medium"
       />
-      <Select options={options.sort} value={select.sort} onChange={callbacks.onSort} />
+      <Select
+        options={options.sort}
+        value={select.sort}
+        onChange={callbacks.onSort}
+        size="medium"
+      />
       <Input
         value={select.query}
         onChange={callbacks.onSearch}
@@ -77,7 +84,7 @@ function CatalogFilter() {
         delay={1000}
         theme={'big'}
       />
-      <button onClick={callbacks.onReset}>{t('filter.reset')}</button>
+      <Button style="text" onClick={callbacks.onReset} title={t('filter.reset')} />
     </SideLayout>
   );
 }

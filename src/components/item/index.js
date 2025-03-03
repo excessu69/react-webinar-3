@@ -1,9 +1,10 @@
 import { memo, useState } from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import { cn as bem } from '@bem-react/classname';
 import numberFormat from '../../utils/number-format';
+import Button from '../button';
 import './style.css';
-import { Link } from 'react-router-dom';
 
 function Item(props) {
   const { onAdd = () => {}, labelCurr = '₽', labelAdd = 'Добавить' } = props;
@@ -23,7 +24,7 @@ function Item(props) {
         <div className={cn('price')}>
           {numberFormat(props.item.price)} {labelCurr}
         </div>
-        <button onClick={callbacks.onAdd}>{labelAdd}</button>
+        <Button style="primary" onClick={callbacks.onAdd} title={labelAdd} />
       </div>
     </div>
   );

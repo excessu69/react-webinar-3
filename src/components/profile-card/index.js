@@ -8,7 +8,7 @@ function ProfileCard({ data }) {
 
   return (
     <div className={cn()}>
-      <h3 className={cn('title')}>Профиль</h3>
+      <h2 className={cn('title')}>Профиль</h2>
       <div className={cn('prop')}>
         <div className={cn('label')}>Имя:</div>
         <div className={cn('value')}>{data?.profile?.name}</div>
@@ -18,7 +18,7 @@ function ProfileCard({ data }) {
         <div className={cn('value')}>{data?.profile?.phone}</div>
       </div>
       <div className={cn('prop')}>
-        <div className={cn('label')}>email:</div>
+        <div className={cn('label')}>Email:</div>
         <div className={cn('value')}>{data?.email}</div>
       </div>
     </div>

@@ -1,0 +1,9 @@
+.HeadLayout {
+  padding-inline: 16px;
+  background-color: var(--second-background);
+}
+
+.HeadLayout-container {
+  max-width: 1152px;
+  margin: 0 auto;
+}

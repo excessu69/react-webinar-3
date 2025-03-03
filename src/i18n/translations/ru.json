@@ -21,6 +21,8 @@
   "auth.login": "Логин",
   "auth.password": "Пароль",
   "auth.signIn": "Войти",
+  "auth.login-placeholder": "Введите логин",
+  "auth.password-placeholder": "Введите пароль",
   "session.signIn": "Вход",
   "session.signOut": "Выход"
 }

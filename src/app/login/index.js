@@ -12,6 +12,8 @@ import { useLocation, useNavigate } from 'react-router-dom';
 import useStore from '../../hooks/use-store';
 import useSelector from '../../hooks/use-selector';
 import useInit from '../../hooks/use-init';
+import HeadLayout from '../../components/head-layout';
+import Form from '../../components/form';
 
 function Login() {
   const { t } = useTranslate();
@@ -57,33 +59,41 @@ function Login() {
   };
 
   return (
-    <PageLayout>
-      <TopHead />
+    <>
+      <HeadLayout>
+        <TopHead />
+      </HeadLayout>
       <Head title={t('title')}>
         <LocaleSelect />
       </Head>
-      <Navigation />
-      <SideLayout padding="medium">
-        <form onSubmit={callbacks.onSubmit}>
-          <h2>{t('auth.title')}</h2>
-          <Field label={t('auth.login')} error={select.errors?.login}>
-            <Input name="login" value={data.login} onChange={callbacks.onChange} />
-          </Field>
-          <Field label={t('auth.password')} error={select.errors?.password}>
-            <Input
-              name="password"
-              type="password"
-              value={data.password}
-              onChange={callbacks.onChange}
-            />
-          </Field>
-          <Field error={select.errors?.other} />
-          <Field>
-            <button type="submit">{t('auth.signIn')}</button>
-          </Field>
-        </form>
-      </SideLayout>
-    </PageLayout>
+      <PageLayout>
+        <Navigation />
+        <SideLayout padding="medium">
+          <Form onSubmit={callbacks.onSubmit} title={t('auth.title')} submitTitle={t('auth.signIn')}>
+            <Field label={t('auth.login')} error={select.errors?.login}>
+              <Input
+                name="login"
+                value={data.login}
+                onChange={callbacks.onChange}
+                placeholder={t('auth.login-placeholder')}
+                theme="small"
+              />
+            </Field>
+            <Field label={t('auth.password')} error={select.errors?.password}>
+              <Input
+                name="password"
+                type="password"
+                value={data.password}
+                onChange={callbacks.onChange}
+                placeholder={t('auth.password-placeholder')}
+                theme="small"
+              />
+            </Field>
+            <Field error={select.errors?.other} />
+          </Form>
+        </SideLayout>
+      </PageLayout>
+    </>
   );
 }
 

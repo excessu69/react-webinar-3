@@ -4,7 +4,7 @@ import { cn as bem } from '@bem-react/classname';
 import './style.css';
 
 function ModalLayout(props) {
-  const { title = 'Модалка', labelClose = 'Закрыть', onClose = () => {} } = props;
+  const { title = 'Модалка', onClose = () => {} } = props;
   const cn = bem('ModalLayout');
 
   // Корректировка центра, если модалка больше окна браузера.
@@ -32,9 +32,7 @@ function ModalLayout(props) {
       <div className={cn('frame')} ref={frame}>
         <div className={cn('head')}>
           <h1 className={cn('title')}>{title}</h1>
-          <button className={cn('close')} onClick={onClose}>
-            {labelClose}
-          </button>
+          <button className={cn('close')} onClick={onClose} />
         </div>
         <div className={cn('content')}>{props.children}</div>
       </div>
@@ -46,7 +44,6 @@ ModalLayout.propTypes = {
   title: PropTypes.string,
   onClose: PropTypes.func,
   children: PropTypes.node,
-  labelClose: PropTypes.string,
 };
 
 export default memo(ModalLayout);
