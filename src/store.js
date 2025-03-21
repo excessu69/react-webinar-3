@@ -3,8 +3,12 @@
  */
 class Store {
   constructor(initState = {}) {
-    this.state = initState;
-    this.listeners = []; // Слушатели изменений состояния
+    this.state = {
+      list: [],
+      usedCodes: new Set(),
+      ...initState
+    };
+    this.listeners = [];
   }
 
   /**
@@ -39,12 +43,37 @@ class Store {
   }
 
   /**
+   * Генерирует уникальный код, который еще не использовался
+   */
+  generateUniqueCode() {
+    let newCode = 8;
+    while (this.state.usedCodes.has(newCode)) {
+      newCode++;
+    }
+    return newCode;
+  }
+
+  /**
+   * Рандомная генерация чисел
+   */
+  // generateUniqueCode() {
+  //   let newCode;
+  //   do {
+  //     newCode = Math.floor(Math.random() * 999) + 1;
+  //   } while (this.state.usedCodes.has(newCode));
+  //   return newCode;
+  // }
+
+  /**
    * Добавление новой записи
    */
   addItem() {
+    const newCode = this.generateUniqueCode();
+
     this.setState({
       ...this.state,
-      list: [...this.state.list, { code: this.state.list.length + 1, title: 'Новая запись' }],
+      list: [...this.state.list, { code: newCode, title: 'Новая запись' }],
+      usedCodes: new Set(this.state.usedCodes).add(newCode)
     });
   }
 
@@ -62,15 +91,21 @@ class Store {
   /**
    * Выделение записи по коду
    * @param code
+   * @param event
    */
-  selectItem(code) {
+  selectItem(code, event) {
+    const isCtrlPressed = event?.ctrlKey || event?.metaKey;
+
     this.setState({
       ...this.state,
       list: this.state.list.map(item => {
         if (item.code === code) {
-          item.selected = !item.selected;
+          if (!item.selected) {
+            return { ...item, selected: true, selectionCount: (item.selectionCount || 0) + 1 };
+          }
+          return { ...item, selected: false };
         }
-        return item;
+        return isCtrlPressed ? item : { ...item, selected: false };
       }),
     });
   }
