@@ -3,6 +3,21 @@ import { createElement } from './utils.js';
 import './styles.css';
 
 /**
+ * Функция для плюрализации слова "раз"
+ * @param {number} count
+ * @returns {string}
+ */
+function pluralizeCount(count) {
+  if (count % 10 === 1 && count % 100 !== 11) {
+    return `${count} раз`;
+  } else if ([2, 3, 4].includes(count % 10) && ![12, 13, 14].includes(count % 100)) {
+    return `${count} раза`;
+  } else {
+    return `${count} раз`;
+  }
+}
+
+/**
  * Приложение
  * @param store {Store} Состояние приложения
  * @returns {React.ReactElement}
@@ -30,11 +45,15 @@ function App({ store }) {
                 <div className="Item-title">
                   {item.title}
                   {item.selectionCount > 0 && (
-                    <span className="Item-counter"> | Выделяли {item.selectionCount} раз</span>
+                    <span className="Item-counter"> | Выделяли {pluralizeCount(item.selectionCount)}</span>
                   )}
                 </div>
                 <div className="Item-actions">
-                  <button onClick={() => store.deleteItem(item.code)}>Удалить</button>
+                  <button onClick={(event) => {
+                    event.stopPropagation();
+                    store.deleteItem(item.code);
+                  }}>Удалить
+                  </button>
                 </div>
               </div>
             </div>
