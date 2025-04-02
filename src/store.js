@@ -4,83 +4,96 @@ import { generateCode } from './utils';
  * Хранилище состояния приложения
  */
 class Store {
-  constructor(initState = {}) {
+  constructor(initState = { list: [], cart: [], totalCount: 0, totalPrice: 0 }) {
     this.state = initState;
-    this.listeners = []; // Слушатели изменений состояния
+    this.listeners = [];
   }
 
-  /**
-   * Подписка слушателя на изменения состояния
-   * @param listener {Function}
-   * @returns {Function} Функция отписки
-   */
   subscribe(listener) {
     this.listeners.push(listener);
-    // Возвращается функция для удаления добавленного слушателя
     return () => {
       this.listeners = this.listeners.filter(item => item !== listener);
     };
   }
 
-  /**
-   * Выбор состояния
-   * @returns {Object}
-   */
   getState() {
     return this.state;
   }
 
-  /**
-   * Установка состояния
-   * @param newState {Object}
-   */
   setState(newState) {
     this.state = newState;
-    // Вызываем всех слушателей
     for (const listener of this.listeners) listener();
   }
 
   /**
-   * Добавление новой записи
+   * Добавление товара в корзину
    */
-  addItem() {
+  addToCart(itemCode) {
+    if (!Array.isArray(this.state.list) || !Array.isArray(this.state.cart)) {
+      console.error("list или cart не является массивом.");
+      return;
+    }
+
+    const item = this.state.list.find(i => i.code === itemCode);
+    if (!item) {
+      console.error(`Товар с кодом ${itemCode} не найден.`);
+      return;
+    }
+
+    let newCart = [...this.state.cart];
+    const existingItem = newCart.find(i => i.code === itemCode);
+
+    if (existingItem) {
+      existingItem.count += 1;
+    } else {
+      newCart.push({ ...item, count: 1 });
+    }
+
+    this.recalculateCart(newCart);
+  }
+
+  /**
+   * Удаление товара из корзины
+   */
+  onRemoveCart(code) {
+    const newCart = this.state.cart.filter(item => item.code !== code);
+    this.recalculateCart(newCart);
+  }
+
+  /**
+   * Пересчет суммы и количества товаров
+   */
+  recalculateCart(newCart) {
+    const totalCount = newCart.reduce((total, item) => total + item.count, 0);
+    const totalPrice = newCart.reduce((total, item) => total + item.price * item.count, 0);
+
     this.setState({
       ...this.state,
-      list: [...this.state.list, { code: generateCode(), title: 'Новая запись' }],
+      cart: newCart,
+      totalCount,
+      totalPrice,
     });
+  }
+
+  getTotalCount() {
+    return this.state.totalCount;
+  }
+
+  getTotalPrice() {
+    return this.state.totalPrice;
+  }
+
+  getUniqueCount() {
+    return this.state.cart.length;
   }
 
   /**
    * Удаление записи по коду
-   * @param code
    */
   deleteItem(code) {
     this.setState({
       ...this.state,
-      // Новый список, в котором не будет удаляемой записи
       list: this.state.list.filter(item => item.code !== code),
-    });
-  }
-
-  /**
-   * Выделение записи по коду
-   * @param code
-   */
-  selectItem(code) {
-    this.setState({
-      ...this.state,
-      list: this.state.list.map(item => {
-        if (item.code === code) {
-          // Смена выделения и подсчёт
-          return {
-            ...item,
-            selected: !item.selected,
-            count: item.selected ? item.count : item.count + 1 || 1,
-          };
-        }
-        // Сброс выделения если выделена
-        return item.selected ? { ...item, selected: false } : item;
-      }),
     });
   }
 }

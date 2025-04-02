@@ -1,17 +1,21 @@
 .Controls {
   display: flex;
   justify-content: flex-end;
-  padding: 24px 16px 24px 0;
+  padding: 24px 0 24px 24px;
 }
 
 .Controls button {
+  background-image: url('images/controls-icon/icon.svg');
+  background-repeat: no-repeat;
+  background-position: 19px center;
   border: 1px solid var(--primary);
-  padding: 8px 16px;
-  background-color: var(--primary);
-  color: var(--second-text);
+  padding: 9px 16px 9px 48px;
+  background-color: var(--second-text);
+  color: var(--main-text);
 
   &:hover {
     background-color: var(--background);
     color: var(--primary);
   }
 }
+
