@@ -1,0 +1,73 @@
+.Pagination {
+  display: flex;
+  margin-top: 16px;
+  font-size: 16px;
+  justify-content: flex-end; /* Размещаем справа */
+  align-items: center;
+}
+
+.Pagination-limit {
+  display: flex;
+  align-items: center;
+  margin-right: 50px; /* Отступ от кнопок пагинации */
+  gap: 5px;
+}
+
+.Pagination-limit span {
+  font-size: 16px;
+  font-family: var(--font-family);
+}
+
+.Pagination-limit button {
+  all: unset;
+  width: 40px;
+  height: 22px;
+  text-align: center;
+  font-family: var(--font-family);
+  font-size: 16px;
+  border: 1px;
+  border-radius: 2px;
+  cursor: pointer;
+}
+
+.Pagination-limit button.active {
+  background-color: var(--primary);
+  border: 1px;
+  border-radius: 2px;
+
+}
+
+.Pagination-pages {
+  display: flex; /* Горизонтальное расположение кнопок */
+}
+
+.Pagination button, .Pagination-ellipsis {
+  all: unset;
+  width: 22px;
+  height: 22px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--font-family);
+  font-size: 16px;
+  letter-spacing: 0;
+  cursor: pointer;
+}
+
+.Pagination button:not(.Pagination-limit button.active, .Pagination button:disabled):hover {
+  background-color: var(--primary-select);
+  cursor: pointer;
+  border: 1px;
+  border-radius: 2px;
+}
+
+.Pagination button:disabled {
+  background: var(--primary);
+  border: 1px;
+  border-radius: 2px;
+}
+
+.Pagination-ellipsis {
+  color: var(--main-text);
+  cursor: default;
+}

@@ -31,3 +31,15 @@
     color: var(--delete);
   }
 }
+
+.ItemBasket .ItemBasket-link {
+  text-decoration: none;
+  color: var(--main-text);
+}
+
+.ItemBasket .ItemBasket-link:hover {
+  color: var(--primary);
+}
+
+
+

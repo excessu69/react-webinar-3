@@ -23,3 +23,15 @@
     background-color: var(--background);
   }
 }
+
+.Item .Item-title-link {
+  color: var(--main-text);
+  text-decoration: none;
+}
+
+.Item .Item-title-link:hover {
+  color: var(--primary);
+}
+
+
+
