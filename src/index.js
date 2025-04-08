@@ -4,7 +4,7 @@ import { StoreContext } from './store/context';
 import { I18nProvider } from './i18n/context';
 import App from './app';
 import Store from './store';
-import 'global.css';
+import 'theme.css';
 
 const store = new Store();
 

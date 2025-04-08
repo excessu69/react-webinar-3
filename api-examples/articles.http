@@ -18,11 +18,11 @@ GET http://query.rest/api/v1/articles?limit=10&skip=10&
 ###
 # Товар по id
 
-GET http://query.rest/api/v1/articles/66fab39363bfe248a85630b3
+GET http://query.rest/api/v1/articles/67f1871a692e2282cbacd310
 
 ###
 # Товар по id с подробностями о стране и категории
 # Про формат fields смотри http://query.rest
 
-GET http://query.rest/api/v1/articles/66fab39363bfe248a85630b3?
+GET http://query.rest/api/v1/articles/67f1871a692e2282cbacd310?
   fields=*,madeIn(title,code),category(title)
