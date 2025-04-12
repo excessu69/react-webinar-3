@@ -1,0 +1,65 @@
+/* Контейнер формы */
+.login-form-container {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  max-width: 233px;
+
+}
+
+/* Заголовок формы */
+.login-form-title {
+  font-family: var(--second-font-family);
+  font-weight: bold;
+  font-size: 32px;
+  margin-bottom: 24px;
+  margin-top: 24px;
+  align-self: flex-start;
+}
+
+/* Стили для формы */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  gap: 24px;
+}
+
+.login-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+/* Поля ввода */
+.login-form-input {
+  font-family: var(--second-font-family);
+  font-size: 14px;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  width: 100%;
+  box-sizing: border-box;
+  height: 40px;
+}
+
+/* Кнопка */
+.login-form-button {
+  font-family: var(--second-font-family);
+  color: #fff;
+  background-color: var(--primary);
+  border-radius: 4px;
+  cursor: pointer;
+  align-self: flex-start;
+  padding: 8px 16px;
+}
+
+/* Ошибка */
+.login-form-error {
+  font-family: var(--second-font-family);
+  font-size: 12px;
+  color: red;
+  margin-top: 10px;
+  align-self: flex-start; /* Ошибка остается слева */
+}

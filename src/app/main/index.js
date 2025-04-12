@@ -18,6 +18,8 @@ function Main() {
   useInit(
     () => {
       store.actions.catalog.initParams();
+      store.actions.catalog.loadCategories();
+      store.actions.catalog.setParams({}, true);
     },
     [],
     true,
