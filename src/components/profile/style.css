@@ -1,0 +1,19 @@
+.profile h2 {
+  font-family: var(--second-font-family);
+  margin: 24px 0;
+}
+
+.profile div {
+  display: grid;
+  grid-template-columns: 80px 1fr;
+  gap: 8px 16px;
+  align-items: start;
+}
+
+.profile p {
+  display: contents;
+}
+
+.profile p strong {
+  font-weight: bold;
+}

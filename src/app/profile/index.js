@@ -8,6 +8,10 @@ import PageLayout from "../../components/page-layout";
 import Navigation from "../../containers/navigation";
 import useTranslate from "../../hooks/use-translate";
 
+
+/**
+ * Страница с данными пользователя
+ */
 function ProfileContainer() {
   const navigate = useNavigate();
   const { t } = useTranslate();
@@ -19,14 +23,13 @@ function ProfileContainer() {
 
   useEffect(() => {
     if (!select.isLoggedIn) {
-      navigate('/login'); // Перенаправляем на /login, если пользователь не авторизован
+      navigate('/login');
     }
   }, [select.isLoggedIn, navigate]);
 
   if (!select.isLoggedIn) {
-    return null; // Ничего не рендерим до перенаправления
+    return null;
   }
-
 
   return (
     <>
@@ -35,7 +38,7 @@ function ProfileContainer() {
       </Head>
       <PageLayout>
         <Navigation />
-        <Profile user={select.user} />;
+        <Profile user={select.user} />
       </PageLayout>
     </>
   );

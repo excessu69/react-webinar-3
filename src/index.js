@@ -7,6 +7,7 @@ import Store from './store';
 import 'theme.css';
 
 const store = new Store();
+store.actions.user.restoreState();
 
 const root = createRoot(document.getElementById('root'));
 

@@ -1,11 +1,20 @@
+import './style.css'
+
 function Profile({ user }) {
   return (
     <div className="profile">
-      <h2>Профиль пользователя</h2>
+      <h2>Профиль </h2>
       {user && (
         <div>
-          <p>Имя: {user.name}</p>
-          <p>Email: {user.email}</p>
+          <p>
+            <span>Имя:</span> <strong>{user.name}</strong>
+          </p>
+          <p>
+            <span>Телефон:</span> <strong>{user.phone}</strong>
+          </p>
+          <p>
+            <span>Email:</span> <strong>{user.email}</strong>
+          </p>
         </div>
       )}
     </div>

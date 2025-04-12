@@ -7,7 +7,6 @@ import Login from './login';
 import Profile from './profile';
 import HeaderContainer from "../containers/header-container";
 
-
 function App() {
   const activeModal = useSelector(state => state.modals.name);
 

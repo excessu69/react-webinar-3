@@ -14,15 +14,17 @@ class UserState extends StoreModule {
    */
   restoreState() {
     const token = localStorage.getItem('token');
-    if (token) {
+    const userData = localStorage.getItem('userData');
+
+    if (token && userData) {
       this.setState(
         {
           ...this.getState(),
           isLoggedIn: true,
+          userData: JSON.parse(userData), // Восстанавливаем данные пользователя
         },
         'Восстановлено состояние авторизации'
       );
-      this.getUserData(); // Загружаем данные пользователя
     }
   }
 
@@ -44,10 +46,13 @@ class UserState extends StoreModule {
 
       const data = await response.json();
 
+      console.log('Ответ сервера:', data);
+
       if (response.ok && data.result) {
         const userData = {
-          name: data.result.profile.name,
-          email: data.result.email,
+          name: data.result.user.profile.name,
+          phone: data.result.user.profile.phone,
+          email: data.result.user.email,
         };
 
         this.setState(
@@ -89,10 +94,12 @@ class UserState extends StoreModule {
       if (response.ok && data.result) {
         const userData = {
           name: data.result.user.profile.name,
+          phone: data.result.user.profile.phone,
           email: data.result.user.email,
         };
 
-        localStorage.setItem('token', data.result.token); // Сохраняем токен
+        localStorage.setItem('token', data.result.token);
+        localStorage.setItem('userData', JSON.stringify(userData));
 
         this.setState(
           {
@@ -117,9 +124,6 @@ class UserState extends StoreModule {
     }
   }
 
-  /**
-   * Выход пользователя
-   */
   async logOutUser() {
     const token = localStorage.getItem('token');
     if (!token) return;
@@ -133,7 +137,8 @@ class UserState extends StoreModule {
         },
       });
 
-      localStorage.removeItem('token'); // Удаляем токен
+      localStorage.removeItem('token');
+      localStorage.removeItem('userData');
 
       this.setState(
         {

@@ -4,19 +4,36 @@
   background-color: var(--divider);
 }
 
-.header-login-button {
+.header-link {
   font-family: var(--second-font-family);
   font-size: 14px;
   font-weight: bold;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  color: var(--primary);
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.header-link.user-name {
+  font-family: var(--font-family);
+  color: var(--main-text);
+  font-weight: normal;
+  font-size: 16px;
+}
+
+.header-link:hover {
+  text-decoration: none;
+}
+
+.header-authenticated,
+.header-unauthenticated {
   display: flex;
   justify-content: flex-end;
   align-items: center;
-  height: 38px;
+  height: 100%;
   max-width: 1152px;
   margin: 0 auto;
-  color: var(--primary);
-}
-
-.header-login-button:hover {
-  text-decoration: none;
 }
